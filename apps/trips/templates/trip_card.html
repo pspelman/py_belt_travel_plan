@@ -1,0 +1,104 @@
+{% block card %}
+
+    <tr>
+        {#    if this IS a trip I'm going on, don't show the planner #}
+        <td>
+            {% if request.user in trip.travelers.all %}
+
+            {% else %}
+
+                {{ trip.planner.first_name }}
+            {% endif %}
+        </td>
+        <td>
+            {{ trip.start_date }}
+        </td>
+        <td>
+            {{ trip.end_date }}
+        </td>
+        <td class="trip_description">
+            {{ trip.description }}
+        </td>
+        <td>
+            {% if request.user in trip.travelers.all %}
+                <span class="join_trip">
+                <a href="/trips/{{ trip.id }}/join/">
+                Leave-trip
+            </a>
+            {% else %}
+                <span class="join_trip">
+            <a href="/trips/{{ trip.id }}/join/">
+                Join trip
+            </a>
+            </span>
+            {% endif %}
+            {% if trip.planner == request.user %}
+                <span class="delete">
+            <a href="/trips/{{ trip.id }}/delete/">
+                Delete forever
+            </a>
+            </span>
+            {% endif %}
+        </td>
+
+    </tr>
+
+
+
+
+    {##}
+    {##}
+    {#            <span class="join_trip">#}
+    {#            <a href="/trips/{{ trip.id }}/add_fave/">#}
+    {#                {{ plan }}#}
+    {#            </a>#}
+    {#            <span class="join_trip">#}
+    {#            <a href="/trips/{{ trip.id }}/add_fave/">#}
+    {#                Join trip#}
+    {#            </a>#}
+    {#            </span>#}
+    {#        {% endif %}#}
+    {##}
+    {#        <td>{{ trip.destination }}</td>#}
+    {#        <td>{{ trip.start_date }}</td>#}
+    {#        <td>{{ trip.end_date }}</td>#}
+    {#        <td>{{ trip.description }}</td>#}
+    {#    </tr>#}
+    {##}
+    {#    <div class="trip_card">#}
+    {#        <span class="destination">#}
+    {#            {{ trip.destination }}:#}
+    {#        </span>#}
+    {#        <span class="trip_description">#}
+    {#            {{ trip.description }}#}
+    {#        </span><br/>#}
+    {#        <span class="submitted_by">added by:#}
+    {#            <a href="/trips/user/{{ trip.planner_id }}/all">#}
+    {#                {{ trip.planner }}#}
+    {#            </a>#}
+    {#        </span>#}
+    {##}
+    {#        {% if request.user in trip.travelers.all %}#}
+    {#            <span class="join_trip">#}
+    {#            <a href="/trips/{{ trip.id }}/add_fave/">#}
+    {#                Leave-trip#}
+    {#            </a>#}
+    {#        {% else %}#}
+    {#            <span class="join_trip">#}
+    {#            <a href="/trips/{{ trip.id }}/add_fave/">#}
+    {#                Join trip#}
+    {#            </a>#}
+    {#            </span>#}
+    {#        {% endif %}#}
+    {#        {% if trip.planner == request.user %}#}
+    {#            <span class="delete">#}
+    {#            <a href="/trips/{{ trip.id }}/delete/">#}
+    {#                Delete forever#}
+    {#            </a>#}
+    {#            </span>#}
+    {#        {% endif %}#}
+
+
+{#    </div>#}
+
+{% endblock %}

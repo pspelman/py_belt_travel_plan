@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    {% include 'sidebar.html' %}
+    <h2>
+        Trips added by {{ contributor_name }} ({{ trip_count }})
+    </h2>
+
+
+    {% for trip in trip_set %}
+        {% include 'trip_card.html' %}
+    {% endfor %}
+
+    {#    for loop of all the quotes by the user who was clicked on #}
+    {#    for each quote, put it in a quote card#}
+    {#    make it so the user can delete it if this is the user who is logged in#}
+
+
+{% endblock %}

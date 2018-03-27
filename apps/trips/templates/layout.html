@@ -1,0 +1,60 @@
+<!doctype html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css"
+          rel="stylesheet">
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+
+    {% load staticfiles %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    {#<img src="{% static "my_app/example.jpg" %}" alt="My image"/>#}
+    {#<style>#}
+    {#    {% block style %}#}
+    {##}
+    {#    {% endblock %}#}
+    {#</style>#}
+    <script>
+        $(function () {
+            $('.datetime-input').datetimepicker({
+                {#format:'YYYY-MM-DD HH:mm:ss'#}
+                format: 'YYYY-MM-DD'
+            });
+        });
+    </script>
+
+</head>
+{#<div class=page>#}
+<div class=metanav>
+</div>
+<div class="container">
+    <div class="body_content">
+        <div class="sidebar">
+            {% include 'sidebar.html' %}
+        </div>
+        {% block body %}
+            {% include 'dashboard.html' %}
+        {% endblock %}
+    </div>
+
+</div>
+{#</div>#}

@@ -1,0 +1,71 @@
+{#{% extends 'layout.html' %}#}
+{% block body %}
+    <h4>Other Upcoming Trips</h4>
+    <hr/>
+    {% if available_trips %}
+        <table>
+            <tr>
+                <thead>
+                <th>Planner</th>
+                <th>Destination</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Plan</th>
+                <th>Actions</th>
+                </thead>
+
+            </tr>
+            {% for trip in available_trips %}
+                {% if request.user not in trip.travelers.all %}
+                    <tr>
+                        <td>
+                            {{ trip.planner }}
+
+                        </td>
+                        <td>
+                            <a href="/trips/{{ trip.id }}/view_trip">
+                                {{ trip.destination }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ trip.start_date }}
+                        </td>
+                        <td>
+                            {{ trip.end_date }}
+                        </td>
+                        <td class="trip_description">
+                            {{ trip.description }}
+                        </td>
+                        <td>
+                            {#        {% if not trip.planner == request.user %}#}
+                            <span class="join_trip">
+                <a href="/trips/{{ trip.id }}/join/">
+                    Join trip
+                </a>
+            </span>
+                            {#        {% else %}#}
+                            {#            <span class="delete">#}
+                            {#                 <a href="/trips/{{ trip.id }}/delete/">#}
+                            {#                Delete forever#}
+                            {#            </a>#}
+                            {#            </span>#}
+                            {#        {% endif %}#}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+
+    {% else %}
+        No upcoming trips :( <br/>
+
+    {% endif %}
+
+
+{% endblock %}
+
+{#    {% for trip in available_trips %}#}
+{##}
+{#        {% include 'trip_card.html' %}#}
+{##}
+{#    {% endfor %}#}

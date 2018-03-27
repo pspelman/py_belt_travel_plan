@@ -1,0 +1,163 @@
+/*reset the css */
+/** {*/
+/*vertical-align: baseline;*/
+/*font-weight: inherit;*/
+/*font-family: inherit;*/
+/*font-style: inherit;*/
+/*font-size: 100%;*/
+/*border: 0 none;*/
+/*outline: 0;*/
+/*padding: 0;*/
+/*margin: 0;*/
+/*} */
+
+.container {
+    border: 5px solid black;
+    width: 970px;
+    background-color: azure;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.sidebar {
+    display: inline-block;
+    width: 37%;
+    border: 1px solid darkslategrey;
+    border-radius: 5px;
+    border-top: none;
+    /* max-height: 88%; */
+    padding-top: 1%;
+    border-left: none;
+}
+
+.sidebar_top {
+    padding-top: 1%;
+    padding-left: 1%;
+    margin-bottom: 8%;
+}
+
+.body_content {
+    display: inline-block;
+    vertical-align: top;
+    /*border: 3px solid royalblue;*/
+    width: 100%;
+    margin-bottom: 2%;
+    margin-left: 1%;
+    padding-left: 2%;
+}
+
+.main_dash {
+    display: inline-block;
+    /*border: 2px solid red;*/
+    width: 80%;
+    vertical-align: top;
+    padding-left: 2%;
+    max-height: 660px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.remaining_trips_list {
+
+    width: 98%;
+    height: 550px;
+    display: block;
+    padding-bottom: 4%;
+    padding-top: 2%;
+    border-top: 2px solid darkgrey;
+    /* border-top-right-radius: 15px; */
+    border-bottom-right-radius: 10px;
+    border-left: 1px solid lightgray;
+    /* max-height: 32%; */
+    overflow: auto;
+    border-top-left-radius: 24px;
+}
+
+.remaining_trips_list h4 {
+    margin-top: 0.8em;
+    margin-bottom: -1.6em;
+    margin-left: 0.8em;
+}
+
+.remaining_trips_list p {
+    border: 2px dashed yellow;
+}
+
+.trip_card {
+    border: 1px solid cadetblue;
+    border-radius: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: .5%;
+}
+
+.destination {
+    color: darkslategrey;
+}
+
+.description {
+    font-style: italic;
+}
+
+.joined_trips {
+    /*border: 4px dashed greenyellow;*/
+    display: inline-block;
+    vertical-align: top;
+    width: 96%;
+    max-height: 50%;
+    overflow: auto;
+    border-bottom-right-radius: 24px;
+}
+
+.remaining_trips_list .planner {
+    font-size: 6pt;
+    color: cornflowerblue;
+
+}
+
+.remaining_trips_list .join_trip a {
+    text-align: right;
+    color: indianred;
+    font-size: 8pt;
+    margin-left: 5%;
+
+}
+
+* .join_trip a, .delete {
+    text-align: right;
+    color: indianred;
+    font-size: 8pt;
+    margin-left: 5%;
+
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table thead {
+    font-weight: bold;
+    border-bottom: 1px solid rgba(123, 64, 29, 0.65);
+}
+
+.trip_description {
+    width: 300px;
+    word-wrap: break-word;
+}
+
+.user_trip {
+    padding-bottom: 4%;
+    border-bottom-right-radius: 33px;
+    margin-bottom: 6%;
+    border-bottom: 1px solid grey;
+}
+
+#add_button {
+    font-size: 16pt;
+}
+
+.nav_button {
+    font-size: 14pt;
+}

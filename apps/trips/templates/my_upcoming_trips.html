@@ -1,0 +1,80 @@
+{% block body %}
+    <h4>Your Trips</h4>
+
+    {% if joined_trips %}
+        <table>
+            <tr>
+                <thead>
+                <th>Destination</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Plan</th>
+                <th>Actions</th>
+                </thead>
+
+            </tr>
+            {% for trip in joined_trips %}
+                <tr>
+                    <td>
+                        <a href="/trips/{{ trip.id }}/view_trip">
+                            {{ trip.destination }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ trip.start_date }}
+                    </td>
+                    <td>
+                        {{ trip.end_date }}
+                    </td>
+                    <td class="trip_description">
+                        {{ trip.description }}
+                    </td>
+                    <td>
+                        {% if not trip.planner == request.user %}
+                            <span class="join_trip">
+                <a href="/trips/{{ trip.id }}/join/">
+                    Leave trip
+                </a>
+            </span>
+                        {% else %}
+                            <span class="delete">
+                 <a href="/trips/{{ trip.id }}/delete/">
+                Delete forever
+            </a>
+            </span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+
+    {% else %}
+        No upcoming trips :( <br/>
+        Go check out the list of available trips to join!
+    {% endif %}
+{% endblock %}
+
+
+{#{% if joined_trips %}#}
+{#    {% for trip in joined_trips %}#}
+{#        <table>#}
+{#        <thead>#}
+{#            <td>Destination</td>#}
+{#            <td>Start Date</td>#}
+{#            <td>End Date</td>#}
+{#            <td>Plan</td>#}
+{#            <td>Actions</td>#}
+{#        </thead>#}
+{#        {% include 'trip_card.html' %}#}
+{##}
+{#        </table>#}
+{#    need to figure out if it IS a fave, then need to be able to UN favorite  #}
+{#    {% endfor %}#}
+{#{% else %}#}
+{#    No upcoming trips :( <br/>#}
+{#    Go check out the list of available trips to join!#}
+{#    {% endif %}#}
+{#{% endblock %}#}
+
+{#        {% include 'trip_card.html' %}#}

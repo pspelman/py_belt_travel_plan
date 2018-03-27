@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+    <h2>
+        Trip to {{ trip.destination }}
+    </h2>
+    <br/>
+    {% if trip.planner != request.user %}
+        Planned by: {{ trip.planner }}<br/>
+    {% else %}
+        You added this trip
+    {% endif %}
+    {{ traveler.first_name }} {{ traveler.last_name }}<br/>
+    Description: {{ trip.description }}<br/>
+    Start: {{ trip.start_date }}<br/>
+    End: {{ trip.end_date }}<br/>
+
+    <br/>
+    <br/>
+
+    Other's on the trip:<br/>
+    {% for traveler in travelers %}
+        {% if traveler != request.user %}
+            {{ traveler.first_name }} {{ traveler.last_name }}<br/>
+        {% endif %}
+    {% endfor %}
+
+
+    {% if request.user not in travelers %}
+        <span class="join_trip">
+            <a href="/trips/{{ trip.id }}/join/">
+                Join trip
+            </a>
+        </span>
+    {% else %}
+        <span class="join_trip">
+            <a href="/trips/{{ trip.id }}/join/">
+                Leave trip
+            </a>
+        </span>
+    {% endif %}
+
+
+    {% if trip.planner == request.user %}
+        <span class="delete">
+                 <a href="/trips/{{ trip.id }}/delete/">
+                Delete forever
+                </a>
+            </span>
+    {% endif %}
+    <br/>
+
+
+{% endblock %}

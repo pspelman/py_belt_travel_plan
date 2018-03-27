@@ -1,0 +1,9 @@
+{#{% extends sidebar %}#}
+{% block sidebar %}
+    <div class="sidebar_top">
+        Logged in as: {{ request.user.first_name }}
+        <br/>
+        <a href="/" class="nav_button"> Home</a> ||
+        <a href="/logout" class="nav_button">Logout</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="main_dash">
+        <h1>Welcome {{ greeting_name }} - || - Dashboard </h1>
+        {#            <h2></h2>#}
+        <hr/>
+
+        <div class="user_trip">
+
+            {% include 'my_upcoming_trips.html' %}
+        </div>
+        <div class="remaining_trips_list">
+            {% include 'remaining_trips_list.html' %}
+        </div>
+
+
+    </div>
+
+    <a href="/trips/add_trip" id="add_button">Add a trip</a>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+<!doctype html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    {#<img src="{% static "my_app/example.jpg" %}" alt="My image"/>#}
+
+    {#<style>#}
+    {#    {% block style %}#}
+    {##}
+    {#    {% endblock %}#}
+    {#</style>#}
+
+</head>
+{#<div class=page>#}
+<div class=metanav>
+</div>
+<div class="container">
+    <div class="sidebar">
+        {% include 'sidebar.html' %}
+    </div>
+    <div class="body_content">
+        {% block body %}
+            {% include 'dashboard.html' %}
+        {% endblock %}
+    </div>
+
+</div>
+{#</div>#}
