@@ -4,13 +4,22 @@
 
     <h2>
         Trip to {{ trip.destination }}
+    {% if trip.planner == request.user %}
+        <span class="delete">
+                 <a href="/trips/{{ trip.id }}/delete/">
+                Delete forever
+                </a>
+            </span>
+    {% endif %}
     </h2>
     <br/>
     {% if trip.planner != request.user %}
-        Planned by: {{ trip.planner }}<br/>
+        Planned by: {{ trip.planner.first_name }} ( <a href="mailto:{{ trip.planner.email }}" >{{ trip.planner.email }}</a> )<br/>
     {% else %}
         You added this trip
+
     {% endif %}
+
     {{ traveler.first_name }} {{ traveler.last_name }}<br/>
     Description: {{ trip.description }}<br/>
     Start: {{ trip.start_date }}<br/>
@@ -19,12 +28,21 @@
     <br/>
     <br/>
 
-    Other's on the trip:<br/>
+    People on the trip:<br/>
+    <ul>
+    {% if trip.travelers.count == 1 %}
+        <li>So far {{ trip.planner }} is alone on this one...</li>
+    {% endif %}
     {% for traveler in travelers %}
-        {% if traveler != request.user %}
-            {{ traveler.first_name }} {{ traveler.last_name }}<br/>
-        {% endif %}
+{#        {% if traveler != request.user %}#}
+            {% if traveler != trip.planner %}
+                <li>
+                    {{ traveler.first_name }} {{ traveler.last_name }}
+                </li>
+            {% endif %}
+{#        {% endif %}#}
     {% endfor %}
+    </ul>
 
 
     {% if request.user not in travelers %}
@@ -34,21 +52,16 @@
             </a>
         </span>
     {% else %}
-        <span class="join_trip">
-            <a href="/trips/{{ trip.id }}/join/">
-                Leave trip
-            </a>
-        </span>
-    {% endif %}
-
-
-    {% if trip.planner == request.user %}
-        <span class="delete">
-                 <a href="/trips/{{ trip.id }}/delete/">
-                Delete forever
+        {% if request.user != trip.planner %}
+            <span class="join_trip">
+                <a href="/trips/{{ trip.id }}/join/">
+                    Leave trip
                 </a>
             </span>
+        {% endif %}
+
     {% endif %}
+
     <br/>
 
 
